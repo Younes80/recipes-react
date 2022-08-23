@@ -1,0 +1,18 @@
+@use '../mixins' as mixin;
+
+.contentCard {
+	max-width: 1130px;
+	width: 100%;
+	.grid {
+		display: grid;
+		place-content: center;
+		grid-template-columns: repeat(3, 350px);
+		gap: 20px;
+		@include mixin.lg-lt {
+			grid-template-columns: repeat(2, 350px);
+		}
+		@include mixin.sm-lt {
+			grid-template-columns: repeat(1, 350px);
+		}
+	}
+}
