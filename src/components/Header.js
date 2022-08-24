@@ -19,7 +19,12 @@ const Header = () => {
 				onClick={() => setShowMenu(!showMenu)}
 				className={`${styles.headerXs} fa-solid fa-bars`}
 			></i>
-			{showMenu && <HeaderMenuResponsive />}
+			{showMenu && (
+				<>
+					<div onClick={() => setShowMenu(false)} className="calc"></div>
+					<HeaderMenuResponsive />
+				</>
+			)}
 		</header>
 	);
 };
