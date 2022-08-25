@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
-import logo from '../assets/images/cookchef-d.png';
-import styles from '../assets/styles/components/Header.module.scss';
+import logo from '../../assets/images/cookchef-d.png';
+import styles from './Header.module.scss';
 import HeaderMenuResponsive from './HeaderMenuResponsive';
 
-const Header = () => {
+const Header = ({ setPage }) => {
 	const [showMenu, setShowMenu] = useState(false);
 
 	return (
 		<header className={`${styles.header} d-flex flex-row align-items-center`}>
-			<div className="flex-fill">
+			<div onClick={() => setPage('homepage')} className="flex-fill">
 				<img src={logo} alt="cookchef logo" />
 			</div>
 			<ul className={styles.headerList}>
-				<button className="mr-5 btn btn-reverse-primary">Wishlist</button>
+				<button
+					onClick={() => setPage('admin')}
+					className="btn btn-primary mr-15"
+				>
+					Ajouter une recette
+				</button>
+				<button className="mr-15 btn btn-reverse-primary">Wishlist</button>
 				<button className="btn btn-primary">connexion</button>
 			</ul>
 			<i
@@ -22,7 +28,7 @@ const Header = () => {
 			{showMenu && (
 				<>
 					<div onClick={() => setShowMenu(false)} className="calc"></div>
-					<HeaderMenuResponsive />
+					<HeaderMenuResponsive setPage={setPage} />
 				</>
 			)}
 		</header>

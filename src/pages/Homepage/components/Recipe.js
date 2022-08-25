@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import styles from '../assets/styles/components/Recipe.module.scss';
-import { ApiContext } from '../context/ApiContext';
+import styles from './Recipe.module.scss';
+import { ApiContext } from '../../../context/ApiContext';
 
 const Recipe = ({ recipe, toggleLikeRecipe, deleteRecipe }) => {
 	// const [liked, setLiked] = useState(false);

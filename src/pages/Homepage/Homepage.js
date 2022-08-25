@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
-import Recipe from '../components/Recipe';
-import styles from '../assets/styles/pages/Homepage.module.scss';
-import { ApiContext } from '../context/ApiContext';
-import { useFetchData } from '../hooks';
+import Recipe from './components/Recipe';
+import styles from './Homepage.module.scss';
+import { ApiContext } from '../../context/ApiContext';
+import { useFetchData } from '../../hooks';
+import Loading from '../../components/Loading/Loading';
 
 const Homepage = () => {
 	const [filter, setFilter] = useState('');
@@ -10,7 +11,7 @@ const Homepage = () => {
 
 	const URL_API = useContext(ApiContext);
 
-	const [[recipes, setRecipes]] = useFetchData(URL_API, page);
+	const [[recipes, setRecipes], isLoading] = useFetchData(URL_API, page);
 
 	const updateLikeRecipe = updatedRecipe => {
 		setRecipes(
@@ -44,18 +45,22 @@ const Homepage = () => {
 						onInput={handleInput}
 					/>
 				</div>
-				<div className={styles.grid}>
-					{recipes
-						.filter(recipe => recipe.title.toLowerCase().startsWith(filter))
-						.map(recipe => (
-							<Recipe
-								key={recipe._id}
-								recipe={recipe}
-								toggleLikeRecipe={updateLikeRecipe}
-								deleteRecipe={deleteRecipe}
-							/>
-						))}
-				</div>
+				{isLoading && recipes.length === 0 ? (
+					<Loading />
+				) : (
+					<div className={styles.grid}>
+						{recipes
+							.filter(recipe => recipe.title.toLowerCase().startsWith(filter))
+							.map(recipe => (
+								<Recipe
+									key={recipe._id}
+									recipe={recipe}
+									toggleLikeRecipe={updateLikeRecipe}
+									deleteRecipe={deleteRecipe}
+								/>
+							))}
+					</div>
+				)}
 				<div>
 					<button onClick={() => setPage(page + 1)} className="btn btn-primary">
 						Charger plus de recettes

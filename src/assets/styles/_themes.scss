@@ -22,3 +22,24 @@
 	border-radius: 20px;
 	background-color: white;
 }
+
+label {
+	font-size: 14px;
+	font-weight: 500;
+	margin-left: 15px;
+	margin-bottom: 3px;
+}
+
+input {
+	padding: 10px 15px;
+	border: 2px solid var(--gray-2);
+	border-radius: 20px;
+	outline: 0;
+}
+
+.form-error {
+	color: var(--red-1);
+	font-size: 12px;
+	font-weight: 500;
+	margin-left: 15px;
+}

@@ -23,11 +23,12 @@ export const useFetchData = (url, page) => {
 				}
 			} catch (error) {
 				setError('ERREUR');
-			} finally {
-				if (!cancel) {
-					setIsLoading(false);
-				}
 			}
+			// finally {
+			// 	if (!cancel) {
+			// 		setIsLoading(false);
+			// 	}
+			// }
 		};
 		fetchData();
 		return () => (cancel = true);
