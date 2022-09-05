@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import styles from './Recipe.module.scss';
 import { ApiContext } from '../../../context/ApiContext';
+import { Link } from 'react-router-dom';
 
 const Recipe = ({ recipe, toggleLikeRecipe, deleteRecipe }) => {
 	// const [liked, setLiked] = useState(false);
@@ -44,9 +45,9 @@ const Recipe = ({ recipe, toggleLikeRecipe, deleteRecipe }) => {
 	return (
 		<div className={`d-flex flex-column ${styles.recipe} `}>
 			<i onClick={handleClickDelete} className="fa-solid fa-xmark"></i>
-			<div className={`${styles.imageContainer}`}>
+			<Link to={`/recipe/${recipe._id}`} className={`${styles.imageContainer}`}>
 				<img src={recipe.image} alt="Recette" />
-			</div>
+			</Link>
 			<div
 				className={`${styles.recipeTitle} d-flex flex-column justify-content-center align-items-center`}
 			>

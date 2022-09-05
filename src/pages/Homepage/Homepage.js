@@ -7,7 +7,7 @@ import Loading from '../../components/Loading/Loading';
 
 const Homepage = () => {
 	const [filter, setFilter] = useState('');
-	const [page, setPage] = useState(1);
+	const [page, setPage] = useState(0);
 
 	const URL_API = useContext(ApiContext);
 
